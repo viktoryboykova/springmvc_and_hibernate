@@ -19,12 +19,12 @@ public class MyController {
         this.myService = myService;
     }
 
-    @GetMapping(value = "/getAll"/*, produces = MediaType.APPLICATION_JSON_VALUE*/)
+    @GetMapping(value = "/getAll")
     public List<CatDTO> getAll() {
         return myService.getAll().stream().map(CatDTO::new).collect(Collectors.toList());
     }
 
-    @PostMapping(value = "/save"/*, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE*/)
+    @PostMapping(value = "/save")
     public CatDTO save(@RequestBody CatDTO catDTO) {
         Cat cat = myService.save(new Cat(catDTO.getName(), catDTO.getAge()));
         return new CatDTO(cat);
